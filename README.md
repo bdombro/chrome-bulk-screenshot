@@ -43,8 +43,6 @@ Examples
   ...
 ```
 
-Repo: https://git.io/vpZpx
-
 Then check the 'out' folders.
 
 
