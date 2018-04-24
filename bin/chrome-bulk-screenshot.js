@@ -1,4 +1,4 @@
-#!/usr/bin/env Node
+#!/usr/bin/env node
 
 const chromeBulkScreenshot = require('chrome-bulk-screenshot');
 
