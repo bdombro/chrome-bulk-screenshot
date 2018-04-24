@@ -1,4 +1,4 @@
-# chrome-bulk-screenshot
+# 📸 chrome-bulk-screenshot 📷
 
 ## About
 
@@ -26,7 +26,12 @@ Using the chrome cli over many URLs is way CPU expensive and slow, because you m
 
 2. Run this:
 ```
-npm i
+yarn
+or
+yarn --prefer-offline #may be slightly faster if you set this up
+or
+npm install
+
 node chrome-bulk-screenshot.js
 ```
 
