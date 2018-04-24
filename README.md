@@ -48,7 +48,7 @@ Then check the 'out' folders.
 
 ## Contributing
 
-Open up a pull request or email me
+Open up a pull request or email me (see package.json for email)
 
 
 ## Related
