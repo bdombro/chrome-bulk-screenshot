@@ -19,21 +19,31 @@ Using the chrome cli over many URLs is way CPU expensive and slow, because you m
 
 1. Requires Node v7.x or higher
 
+## Installation
+
+```
+yarn global add chrome-bulk-screenshot
+or
+npm install -g chrome-bulk-screenshot
+```
 
 ## Usage
 
-1. Copy and configure the sample yaml to your project root directory.
-
-2. Run this:
 ```
-yarn
-or
-yarn --prefer-offline #may be slightly faster if you set this up
-or
-npm install
+chrome-bulk-screenshot [options]
 
-node chrome-bulk-screenshot.js
+Options
+  --rainbow, -r  Include a rainbow
+  --init, -i  Copy demo config here
+
+Examples
+  $ chrome-bulk-screenshot --init
+  🌈 unicorns 🌈
+  $ chrome-bulk-screenshot --config=config.yml
+  ...
 ```
+
+Repo: https://git.io/vpZpx
 
 Then check the 'out' folders.
 

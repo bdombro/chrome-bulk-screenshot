@@ -5,9 +5,48 @@
  * Requires Node v7.x or higher
  */
 
+const meow = require('meow');
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const YAML = require('yamljs');
+const path = require('path');
+
+var demoConfig = path.resolve(__dirname) + '/config-example.yml';
+
+
+/**
+ * CLI Handling
+ */
+
+ const cli = meow(`
+    Usage
+      $ chrome-bulk-screenshot [options]
+
+    Options
+      --rainbow, -r  Include a rainbow
+      --init, -i  Copy demo config here
+
+    Examples
+      $ chrome-bulk-screenshot --init
+      🌈 unicorns 🌈
+      $ chrome-bulk-screenshot --config=config.yml
+      ...
+
+    Repo: https://git.io/vpZpx
+
+`, {
+    flags: {
+        init: {
+            type: 'boolean',
+            alias: 'i'
+        },
+        config: {
+            type: 'text',
+            alias: 'c',
+            default: 'config.yml'
+        }
+    }
+});
 
 
 /**
@@ -34,13 +73,25 @@ function ResetDir(path) {
 
 
 /**
- * Prepare Config and output directories
+ * Consume config and output directories
  */
 
-if (fs.existsSync('config.yml'))
-    var config = YAML.load('config.yml');
-else 
-    var config = YAML.load('config-example.yml');
+if (cli.flags['init']) {
+    console.log("\nCopying demo config here.");
+    console.log("🌈 Done! 🌈\n")
+    fs.copySync(demoConfig, 'config.yml');
+    return;
+}
+
+if (fs.existsSync(cli.flags['config']))
+    var config = YAML.load(cli.flags['config']);
+else {
+    console.log("\nConfig file not found at:");
+    console.log(" > " + cli.flags['config']);
+    console.log("Using demo config at:");
+    console.log(" > " + demoConfig + "\n");
+    var config = YAML.load(demoConfig);
+}
 
 // Parse urls
 config.urls = config.urlsRaw.replace( /\t/g, '' ).replace( / /g, '' ).replace( /\n/g, " " ).split( " " );
@@ -90,5 +141,7 @@ for (let [i,url] of config.urls.entries()) {
 }
 
 await browser.close();
+
+console.log("\n🌈 Done! 🌈\n")
 
 })();
