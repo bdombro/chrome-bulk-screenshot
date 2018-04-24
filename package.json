@@ -1,0 +1,34 @@
+{
+  "bundleDependencies": false,
+  "name": "chrome-bulk-screenshot",
+  "description": "This package will EFFICIENTLY take pdf snapshots of rendered web pages in bulk using Puppeteer (aka headless Chromium).",
+  "main": "./index.js",
+  "author": {
+    "name": "Brian Dombrowski",
+    "email": "bdombro@gmail.com",
+    "url": "http://briandombrowski.info"
+  },
+  "engines": {
+    "node": ">= 7.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "*",
+    "puppeteer": "*",
+    "yamljs": "*"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bdombro/chrome-bulk-screenshot.git"
+  },
+  "version": "1.0",
+  "license": "MIT",
+  "keywords": [
+    "headless",
+    "batch",
+    "snapshot",
+    "screenshot",
+    "chrome",
+    "bulk"
+  ]
+}

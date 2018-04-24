@@ -1,0 +1,34 @@
+###
+# User Options
+##
+
+# List screen widths to take snapshots
+screenSizes: [1440, 640, 320]
+
+# Output directory path. Note: It will be cleared!
+# Set to blank if you'd like to skip it.
+outPdfDir: 'out-pdf'
+outJpgDir: 'out-jpg'
+
+# Jpg quality -- doesn't apply to pdf outputs
+quality: 80
+
+# Paste list of urls here. You must indent
+# Confused with the yaml? Hint: http://yaml-multiline.info/
+urlsRaw: |-
+  https://firefox.com
+  https://yahoo.com
+
+# Padding -- number of 0s to pad snapshots
+padding: 2
+
+# Wait for loading until this number of connections are left.
+# increase if your snaps look like they didn't finish loading
+networkIdleLevel: 2
+
+
+###
+# Computed Options - Leave these alone
+##
+
+urls: []
