@@ -9,15 +9,6 @@ const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const YAML = require('yamljs');
 
-/**
- * Config
- */
-
-if (fs.existsSync('config.yml'))
-    var config = YAML.load('config.yml');
-else 
-    var config = YAML.load('config-example.yml');
-
 
 /**
  * Functions
@@ -42,23 +33,28 @@ function ResetDir(path) {
 }
 
 
-
 /**
- * Parse Config
+ * Prepare Config and output directories
  */
+
+if (fs.existsSync('config.yml'))
+    var config = YAML.load('config.yml');
+else 
+    var config = YAML.load('config-example.yml');
+
+// Parse urls
+config.urls = config.urlsRaw.replace( /\t/g, '' ).replace( / /g, '' ).replace( /\n/g, " " ).split( " " );
 
 // Prepare output directory
 if (config.outPdfDir) ResetDir(config.outPdfDir);
 if (config.outJpgDir) ResetDir(config.outJpgDir);
-
-// Parse urls
-config.urls = config.urlsRaw.replace( /\t/g, '' ).replace( / /g, '' ).replace( /\n/g, " " ).split( " " );
 
 
 /**
  * Main
  */
 
+// Create Snapshots
 (async() => {
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
