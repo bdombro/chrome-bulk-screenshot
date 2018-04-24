@@ -8,7 +8,7 @@
 const meow = require('meow');
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
-const YAML = require('yamljs');
+const yaml = require('js-yaml');
 const path = require('path');
 
 var demoConfig = path.resolve(__dirname) + '/config-example.yml';
@@ -84,13 +84,21 @@ if (cli.flags['init']) {
 }
 
 if (fs.existsSync(cli.flags['config']))
-    var config = YAML.load(cli.flags['config']);
+    var configPath = cli.flags['config'];
 else {
     console.log("\nConfig file not found at:");
     console.log(" > " + cli.flags['config']);
     console.log("Using demo config at:");
     console.log(" > " + demoConfig + "\n");
-    var config = YAML.load(demoConfig);
+    var configPath = demoConfig;
+}
+// Get document, or throw exception on error
+try {
+    var config = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
+} catch (e) {
+    console.log("\nError reading yaml file:\n")
+    console.log(e);
+  return
 }
 
 // Parse urls
