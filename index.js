@@ -24,7 +24,7 @@ var demoConfig = path.resolve(__dirname) + '/config-example.yml';
 
     Options
       --rainbow, -r  Include a rainbow
-      --init, -i  Copy demo config here
+      --init, -i  Copy demo config to your current working directory
 
     Examples
       $ chrome-bulk-screenshot --init

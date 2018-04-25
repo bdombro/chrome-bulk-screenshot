@@ -22,10 +22,13 @@ Using the chrome cli over many URLs is way CPU expensive and slow, because you m
 ## Installation
 
 ```
-yarn global add chrome-bulk-screenshot
-or
 npm install -g chrome-bulk-screenshot
+or
+yarn global add chrome-bulk-screenshot
+
 ```
+
+Note: Yarn isn't working right now for me because install hangs on a dependency (Puppeteer). If you have trouble with yarn, please try npm. Suggestions are also appreciated!
 
 ## Usage
 
@@ -34,7 +37,7 @@ chrome-bulk-screenshot [options]
 
 Options
   --rainbow, -r  Include a rainbow
-  --init, -i  Copy demo config here
+  --init, -i  Copy demo config to your current working directory
 
 Examples
   $ chrome-bulk-screenshot --init
