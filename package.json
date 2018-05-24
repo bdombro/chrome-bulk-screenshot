@@ -1,6 +1,6 @@
 {
   "name": "chrome-bulk-screenshot",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This package will EFFICIENTLY take pdf snapshots of rendered web pages in bulk using Puppeteer (aka headless Chromium).",
   "main": "./index.js",
   "bin": {
