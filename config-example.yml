@@ -28,7 +28,8 @@ extraHttpHeaders:
 padding: 2
 
 # Wait for loading until this number of connections are left.
-# increase if your snaps look like they didn't finish loading
+# Decrease if your snaps look like they didn't finish loading
+# Options are 0 and 2 only.
 networkIdleLevel: 2
 
 

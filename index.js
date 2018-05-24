@@ -118,7 +118,6 @@ const browser = await puppeteer.launch();
 const page = await browser.newPage();
 
 if (config.extraHttpHeaders && Object.keys(config.extraHttpHeaders).length) {
-    console.dir(config.extraHttpHeaders);
     await page.setExtraHTTPHeaders(config.extraHttpHeaders);
 }
 
