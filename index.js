@@ -112,11 +112,15 @@ if (config.outJpgDir) ResetDir(config.outJpgDir);
 /**
  * Main
  */
-
 // Create Snapshots
 (async() => {
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
+
+if (config.extraHttpHeaders && Object.keys(config.extraHttpHeaders).length) {
+    console.dir(config.extraHttpHeaders);
+    await page.setExtraHTTPHeaders(config.extraHttpHeaders);
+}
 
 for (let [i,url] of config.urls.entries()) {
     var snapshotFileName = PadNumber(i, config.padding) + '.' + UrlSlugify(url);
@@ -125,7 +129,6 @@ for (let [i,url] of config.urls.entries()) {
 
     await page.emulateMedia('screen');
     await page.goto(url, {waitUntil: 'networkidle' + config.networkIdleLevel}); // networkidle0 = wait until 0 connections left; networkidel2 = wait until 2 connections left.
-
     for (let screenSize of config.screenSizes) {
 
         if (config.outJpgDir) {

@@ -19,6 +19,11 @@ urlsRaw: |-
   https://firefox.com
   https://yahoo.com
 
+# If you'd like to add additional HTTP headers, specify them here
+extraHttpHeaders:
+  Accept-Encoding: gzip, deflate, br # mimics standard Chrome XHR
+  # Accept-Encoding: br, gzip, deflate # mimics standard Safari XHR
+  
 # Padding -- number of 0s to pad snapshots
 padding: 2
 
